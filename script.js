@@ -60,3 +60,35 @@ function appendSpeech() {
 function stopSpeech() {
   speechSynthesis.cancel();
 }
+// 省略: 既存コード（markov構築・生成・読み上げ）はそのまま
+
+function downloadSpeech() {
+  const text = document.getElementById("speechArea").textContent;
+  if (!text) {
+    alert("スピーチが生成されていません。");
+    return;
+  }
+  const blob = new Blob([text], {type: "text/plain"});
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "pta_speech.txt";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function tweetSpeech() {
+  const text = document.getElementById("speechArea").textContent;
+  if (!text) {
+    alert("スピーチが生成されていません。");
+    return;
+  }
+  const maxLength = 280; // Xの文字数制限（URL含むので少し余裕持つ）
+  let tweetText = text.replace(/\n/g, " ");
+  if (tweetText.length > maxLength) {
+    tweetText = tweetText.slice(0, maxLength - 3) + "...";
+  }
+  const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+  window.open(tweetUrl, "_blank");
+}
