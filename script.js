@@ -83,7 +83,7 @@ function loopGenerateSpeech() {
   typeWriterEffect(speech, speechArea, 80, () => {
     editArea.value = speech;
     speakText(speech, () => {
-      setTimeout(loopGenerateSpeech, 1000);
+      setTimeout(loopGenerateSpeech, 200);
     });
   });
 }
