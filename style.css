@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: url("assets/background.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: #333;
+}
+
+#container {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2rem;
+  max-width: 800px;
+  margin: 5vh auto;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #ccc;
+  text-align: center;
+}
+
+#speechArea {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+  white-space: pre-wrap;
+  text-align: left;
+  background: #f8f8f8;
+  padding: 1rem;
+  border-radius: 8px;
+  min-height: 150px;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  margin: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #88c;
+  color: white;
+}
+
+button:hover {
+  background-color: #66a;
+}
