@@ -38,10 +38,25 @@ function generateSentence(chain, length = 50, n = 2) {
 
 markov = buildMarkovChain(sampleCorpus);
 
+function speakText(text) {
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = 'ja-JP';
+  speechSynthesis.cancel(); // 前の発話を止める
+  speechSynthesis.speak(utter);
+}
+
 function generateSpeech() {
-  document.getElementById("speechArea").textContent = generateSentence(markov, 100);
+  const speech = generateSentence(markov, 100);
+  document.getElementById("speechArea").textContent = speech;
+  speakText(speech);
 }
 
 function appendSpeech() {
-  document.getElementById("speechArea").textContent += "\n\n" + generateSentence(markov, 100);
+  const speech = generateSentence(markov, 100);
+  document.getElementById("speechArea").textContent += "\n\n" + speech;
+  speakText(speech);
+}
+
+function stopSpeech() {
+  speechSynthesis.cancel();
 }
